@@ -1,0 +1,18 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+
+      HashMap<String, List<String>> aList = new HashMap<>();
+
+      for(String i : strs){
+        char[] freq = new char[26];
+        for(char s : i.toCharArray()){
+            freq[s - 'a']++;
+        }
+
+        String key = new String(freq);
+
+        aList.computeIfAbsent(key,k -> new ArrayList<>()).add(i);
+      }
+      return new ArrayList<>(aList.values());
+          }
+}
